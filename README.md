@@ -6,16 +6,22 @@ A minimal reader based on create-react-app and R2D2BC v.2
 
 In the project directory, run the following:
 
-### `npm install`
+`npm install`  
 
-### `npm run build`
+`npm run build`  
 
-### `npm start`
+`npm start`
 
-## Issue!
+## Issue
 
-Building this project with npm run build cases the following warning:  
+Building this project causes the following warning:  
 
-Critical dependency: the request of a dependency is an expression
+`Critical dependency: the request of a dependency is an expression`
+
+The webpack documentation describes this error here:
+
+https://webpack.js.org/guides/dependency-management/#require-with-expression
+
+
 
 
