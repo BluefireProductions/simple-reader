@@ -4,6 +4,7 @@ import D2Reader from '@d-i-t-a/reader';
 export default function Reader() {
 
     const [reader, setReader] = React.useState<D2Reader | null>(null);
+    const [scrolling, setScrolling] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         const url = new URL("https://alice.dita.digital/manifest.json");
@@ -23,13 +24,13 @@ export default function Reader() {
 
     function scroll() {
       reader?.scroll(true);
+      setScrolling(true);
     }
     
     function paginate() {
       reader?.scroll(false);
+      setScrolling(false);
     }
-
-    const isScrolling = reader?.currentSettings.verticalScroll ?? false;
 
     return (
         <div>
@@ -40,7 +41,7 @@ export default function Reader() {
           <div style={{ position: "fixed", top: "0px", zIndex: 2 }}>
             <button onClick={reader.previousPage}>Prev Page</button>
             <button onClick={reader.nextPage}>Next Page</button>
-            {isScrolling ? (
+            {scrolling ? (
               <button onClick={paginate}>Paginate</button>
             ) : (
               <button onClick={scroll}>Scroll</button>
